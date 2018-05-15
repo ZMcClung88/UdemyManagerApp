@@ -5,14 +5,19 @@ import { Card, CardSection, Input, Button } from './common';
 
 class LoginForm extends Component {
   onEmailChange(text) {
-    this.props.emailChanged();
+    this.props.emailChanged(text);
   }
 
   render() {
     return (
       <Card>
         <CardSection>
-          <Input label="Email" placeholder="email@gmail.com" onChangeText={this.onEmailChange.bind(this)} />
+          <Input
+            label="Email"
+            placeholder="email@gmail.com"
+            onChangeText={this.onEmailChange.bind(this)}
+            value={this.props.email}
+          />
         </CardSection>
         <CardSection>
           <Input secureTextEntry label="Password" placeholder="password" />
@@ -25,4 +30,11 @@ class LoginForm extends Component {
   }
 }
 
-export default connect(null, { emailChanged })(LoginForm);
+// vvv state = global application state
+mapStateToProps = state => {
+  return {
+    email: state.auth.email
+  };
+};
+
+export default connect(mapStateToProps, { emailChanged })(LoginForm);
