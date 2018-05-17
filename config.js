@@ -1,4 +1,4 @@
-module.export = {
+const config = {
   apiKey: 'AIzaSyAEd93UIPltgJCh2N7PbQisnxxHPypS8Hk',
   authDomain: 'employeemanager-76c5c.firebaseapp.com',
   databaseURL: 'https://employeemanager-76c5c.firebaseio.com',
@@ -6,3 +6,5 @@ module.export = {
   storageBucket: '',
   messagingSenderId: '701672200053'
 };
+
+module.exports = config;
