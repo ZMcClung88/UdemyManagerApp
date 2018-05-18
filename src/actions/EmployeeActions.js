@@ -16,6 +16,11 @@ export const employeeCreate = ({ name, phone, shift }) => {
     firebase
       .database()
       .ref(`/users/${currentUser.uid}/employees`)
-      .push({ name, phone, shift });
+      .push({ name, phone, shift })
+      // vvv routes back to employee list view
+      .then(() => {
+        dispatch({ type: EMPLOYEE_CREATE });
+        Actions.main({ type: 'reset' });
+      });
   };
 };
