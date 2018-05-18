@@ -17,10 +17,9 @@ export const employeeCreate = ({ name, phone, shift }) => {
       .database()
       .ref(`/users/${currentUser.uid}/employees`)
       .push({ name, phone, shift })
-      // vvv routes back to employee list view
       .then(() => {
         dispatch({ type: EMPLOYEE_CREATE });
-        Actions.main({ type: 'reset' });
+        Actions.employeeList({ type: 'reset' });
       });
   };
 };
